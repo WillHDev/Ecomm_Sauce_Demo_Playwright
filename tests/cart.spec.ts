@@ -1,8 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures/ecomm';
 
-test('has title', async ({ page }) => {
+test('Add item to cart', async ({ page }) => {
   await page.goto('https://www.automationexercise.com/');
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+  await page.locator('.productinfo:has-text("Sleeveless Dress")')
+  .locator('text=Add to cart')
+  .click();
+
 });
